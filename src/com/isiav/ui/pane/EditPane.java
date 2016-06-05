@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -57,21 +56,13 @@ public class EditPane extends JPanel {
 	private JScrollPane scrollPane_1;
 	private GridBagConstraints gbc_scrollPane_1;
 	
-	private static EditPane editpane = null;
 	
-	
-	public static EditPane getInstance(JFrame frm){
-		
-		if(editpane==null){
-			editpane =  new EditPane(frm);
-		}
-		return editpane;
-	}
+
 
 	/**
 	 * Create the panel.
 	 */
-	public EditPane(JFrame frm) {
+	public EditPane(JFrame frm,int index) {
 		
 		mainFrame = frm;
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -375,8 +366,6 @@ public class EditPane extends JPanel {
 		
 		txt_edit = new JTextPane();
 		txt_edit.addKeyListener(new KeyAdapter() {
-			private Graphics mgps;
-
 			@Override
 			public void keyPressed(KeyEvent e) {
 				 if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_S){
@@ -384,7 +373,6 @@ public class EditPane extends JPanel {
 				 }else if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_N){
 		                toNew();
 				 }else if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_ENTER){
-					 	mgps = mainFrame.getGraphics();
 		                mainFrame.getContentPane().removeAll();
 		                gbc_scrollPane_1.insets = new Insets(10,10, 10, 10);
 		                gbc_scrollPane_1.gridx = 0;
@@ -399,16 +387,10 @@ public class EditPane extends JPanel {
 					 	String title_txt = txt_title.getText();
 					 	String tag_txt = txt_tag.getText();
 					 	int index =  cmb_books.getSelectedIndex();
-					 	com.isiav.util.PanelUtil.changePanel(mainFrame,new EditPane(mainFrame));
-					 	cmb_books.setSelectedIndex(index);
+					 	com.isiav.util.PanelUtil.changePanel(mainFrame,new EditPane(mainFrame,index));
 					 	txt_title.setText(title_txt);
 					 	txt_tag.setText(tag_txt);
 					 	TxtPanelCtrl.insert(edit_txt, TxtPanelCtrl.getAttrset(),	txt_edit, 0);
-					 	mainFrame.paint(mgps);
-		                mainFrame.repaint();
-		                mainFrame.validate();
-		                mainFrame.invalidate();
-		                mainFrame.validate();
 		                txt_edit.requestFocus();
 				 }
 			}
@@ -422,21 +404,19 @@ public class EditPane extends JPanel {
 		txt_edit.setFont(new Font("ËÎÌו", Font.PLAIN, 15));
 		scrollPane_1.setViewportView(txt_edit);
 		
-		initRun();
+		initRun(index);
 
 	}
 	
-	private void initRun(){
-		new Thread(new Runnable(){  
-			public void run(){  
+	private void initRun(int index){
+		
 				cmb_books.removeAllItems();
 				cmb_books.setModel(new DefaultComboBoxModel(com.isiav.dao.impl.CheckDir.getInstance().getDir()));
 				if(com.isiav.ctrl.EditCtrl.getInstance().setJListData(list, (String)cmb_books.getSelectedItem())){
 					list.setSelectedIndex(0);
 					com.isiav.ctrl.EditCtrl.getInstance().initTxtPane(txt_title, txt_tag, txt_edit,txt_serach, (String)list.getSelectedValue()	, (String)cmb_books.getSelectedItem(),cmb_books);
+					cmb_books.setSelectedIndex(index);
 				}
-			}  
-			}).start();
 	}
 	
 	private void toBtn_save() {

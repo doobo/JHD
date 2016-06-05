@@ -127,7 +127,7 @@ public class Login extends JPanel {
 	private void toLogin() {
 //		com.isiav.util.PanelUtil.changePanel(mainFrame, new EditPane(mainFrame));
 		if(new StartCtrl().toLogin(txt_name.getText(), new String(txt_pwd.getPassword()))){
-			com.isiav.util.PanelUtil.changePanel(mainFrame,new EditPane(mainFrame));
+			com.isiav.util.PanelUtil.changePanel(mainFrame,new EditPane(mainFrame,0));
 		}else{
 			JDialog dialog = new JDialog(mainFrame,true);
 			dialog = com.isiav.util.PanelUtil.setLocation(dialog,"错误提示","用户名或密码不匹配！");
