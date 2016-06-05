@@ -417,6 +417,9 @@ public class EditPane extends JPanel {
 					com.isiav.ctrl.EditCtrl.getInstance().initTxtPane(txt_title, txt_tag, txt_edit,txt_serach, (String)list.getSelectedValue()	, (String)cmb_books.getSelectedItem(),cmb_books);
 					cmb_books.setSelectedIndex(index);
 				}
+				if(index>0){
+					txt_serach.setText("");
+				}
 	}
 	
 	private void toBtn_save() {
