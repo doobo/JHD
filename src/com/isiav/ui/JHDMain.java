@@ -44,7 +44,7 @@ public class JHDMain {
 	 */
 	private void initialize() {
 		frmIt = new JFrame();
-		frmIt.setTitle("\u7F16\u7A0B\u5DE5\u5177\u5305V1.5");
+		frmIt.setTitle("\u7F16\u7A0B\u5DE5\u5177\u5305V1.6");
 		frmIt.setIconImage(Toolkit.getDefaultToolkit().getImage(JHDMain.class.getResource("/com/isiav/util/white24.png")));
 		width = 1000;height = 680;
 		frmIt.setSize(width, height);

@@ -78,12 +78,12 @@ public class EditPane extends JPanel {
 		lblNewLabel_2.setFont(new Font("ËÎÌו", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_2.insets = new Insets(0, 5, 5, 5);
+		gbc_lblNewLabel_2.insets = new Insets(0, 5, 5, 0);
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 0;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		JButton btn_new = new JButton("\u65B0\u5EFA");
+		JButton btn_new = new JButton("\u65B0 \u5EFA");
 		btn_new.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				toNew();
@@ -97,21 +97,20 @@ public class EditPane extends JPanel {
 		gbc_btn_new.gridy = 0;
 		add(btn_new, gbc_btn_new);
 		
-		JButton btn_save = new JButton("\u4FDD\u5B58");
+		JButton btn_save = new JButton("\u4FDD \u5B58");
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				toBtn_save();
 			}
 		});
 		GridBagConstraints gbc_btn_save = new GridBagConstraints();
-		gbc_btn_save.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btn_save.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_save.ipady = 10;
 		gbc_btn_save.gridx = 2;
 		gbc_btn_save.gridy = 0;
 		add(btn_save, gbc_btn_save);
 		
-		JButton btn_del = new JButton("\u5220\u9664");
+		JButton btn_del = new JButton("\u5220 \u9664");
 		btn_del.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				com.isiav.ctrl.EditCtrl.getInstance().toDel((String)cmb_books.getSelectedItem(),txt_title.getText());
@@ -127,7 +126,7 @@ public class EditPane extends JPanel {
 		gbc_btn_del.gridy = 0;
 		add(btn_del, gbc_btn_del);
 		
-		JButton btn_back = new JButton("\u540E\u9000");
+		JButton btn_back = new JButton("\u540E \u9000");
 		btn_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!com.isiav.ctrl.EditCtrl.getInstance().toBack(txt_title, txt_tag, txt_edit, txt_serach)){
@@ -143,7 +142,7 @@ public class EditPane extends JPanel {
 		gbc_btn_back.gridy = 0;
 		add(btn_back, gbc_btn_back);
 		
-		JButton btn_forward = new JButton("\u5411\u524D");
+		JButton btn_forward = new JButton("\u5411 \u524D");
 		btn_forward.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!com.isiav.ctrl.EditCtrl.getInstance().toForward(txt_title, txt_tag, txt_edit, txt_serach)){
@@ -152,14 +151,13 @@ public class EditPane extends JPanel {
 			}
 		});
 		GridBagConstraints gbc_btn_forward = new GridBagConstraints();
-		gbc_btn_forward.anchor = GridBagConstraints.WEST;
 		gbc_btn_forward.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_forward.ipady = 10;
 		gbc_btn_forward.gridx = 5;
 		gbc_btn_forward.gridy = 0;
 		add(btn_forward, gbc_btn_forward);
 		
-		JButton btn_util = new JButton("\u5DE5\u5177");
+		JButton btn_util = new JButton("\u5DE5 \u5177");
 		GridBagConstraints gbc_btn_util = new GridBagConstraints();
 		gbc_btn_util.insets = new Insets(0, 0, 5, 5);
 		gbc_btn_util.anchor = GridBagConstraints.WEST;
@@ -302,7 +300,7 @@ public class EditPane extends JPanel {
 		btn_search.setIcon(new ImageIcon(EditPane.class.getResource("/com/isiav/util/so.png")));
 		GridBagConstraints gbc_btn_search = new GridBagConstraints();
 		gbc_btn_search.anchor = GridBagConstraints.EAST;
-		gbc_btn_search.insets = new Insets(0, 0, 5, 5);
+		gbc_btn_search.insets = new Insets(0, 0, 5, 0);
 		gbc_btn_search.gridx = 1;
 		gbc_btn_search.gridy = 3;
 		add(btn_search, gbc_btn_search);
@@ -316,7 +314,7 @@ public class EditPane extends JPanel {
 		});
 		btn_zoom.setIcon(new ImageIcon(EditPane.class.getResource("/com/isiav/util/da.png")));
 		GridBagConstraints gbc_btn_zoom = new GridBagConstraints();
-		gbc_btn_zoom.insets = new Insets(0, 0, 5, 5);
+		gbc_btn_zoom.insets = new Insets(0, 0, 5, 0);
 		gbc_btn_zoom.gridx = 2;
 		gbc_btn_zoom.gridy = 3;
 		add(btn_zoom, gbc_btn_zoom);
@@ -330,10 +328,23 @@ public class EditPane extends JPanel {
 		});
 		btn_lessen.setIcon(new ImageIcon(EditPane.class.getResource("/com/isiav/util/xiao.png")));
 		GridBagConstraints gbc_btn_lessen = new GridBagConstraints();
-		gbc_btn_lessen.insets = new Insets(0, 0, 5, 5);
+		gbc_btn_lessen.insets = new Insets(0, 0, 5, 0);
 		gbc_btn_lessen.gridx = 3;
 		gbc_btn_lessen.gridy = 3;
 		add(btn_lessen, gbc_btn_lessen);
+		
+		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				  toBigWindow();
+			}
+		});
+		button.setIcon(new ImageIcon(EditPane.class.getResource("/com/isiav/util/big.png")));
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 0);
+		gbc_button.gridx = 4;
+		gbc_button.gridy = 3;
+		add(button, gbc_button);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setPreferredSize(new Dimension(100, 800));
@@ -373,15 +384,7 @@ public class EditPane extends JPanel {
 				 }else if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_N){
 		                toNew();
 				 }else if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_ENTER){
-		                mainFrame.getContentPane().removeAll();
-		                gbc_scrollPane_1.insets = new Insets(10,10, 10, 10);
-		                gbc_scrollPane_1.gridx = 0;
-		                mainFrame.getContentPane().add(scrollPane_1,gbc_scrollPane_1);
-		                mainFrame.repaint();
-		                mainFrame.validate();
-		                mainFrame.invalidate();
-		                mainFrame.validate();
-		                txt_edit.requestFocus();
+		                toBigWindow();
 				 }else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
 					 	String edit_txt = txt_edit.getText();
 					 	String title_txt = txt_title.getText();
@@ -465,6 +468,18 @@ public class EditPane extends JPanel {
 		txt_edit.setText("");
 		txt_title.requestFocus();
 		
+	}
+	
+	private void toBigWindow() {
+		mainFrame.getContentPane().removeAll();
+		gbc_scrollPane_1.insets = new Insets(0,0, 0, 0);
+		gbc_scrollPane_1.gridx = 0;
+		mainFrame.getContentPane().add(scrollPane_1,gbc_scrollPane_1);
+		mainFrame.repaint();
+		mainFrame.validate();
+		mainFrame.invalidate();
+		mainFrame.validate();
+		txt_edit.requestFocus();
 	}
 
 }

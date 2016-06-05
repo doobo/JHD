@@ -11,7 +11,7 @@ import javax.swing.text.StyleConstants;
 
 public class TxtPanelCtrl {
 	
-	public static int fontSize = 16;
+	public static int fontSize = 14;
 	
 	public static void insert(String str,AttributeSet attrset,JTextPane textPane,int point){
 		Document docs=textPane.getDocument();//利用getDocument()方法取得JTextPane的Document instance.0
