@@ -393,7 +393,7 @@ public class EditPane extends JPanel {
 					 	com.isiav.util.PanelUtil.changePanel(mainFrame,new EditPane(mainFrame,index));
 					 	txt_title.setText(title_txt);
 					 	txt_tag.setText(tag_txt);
-					 	TxtPanelCtrl.insert(edit_txt, TxtPanelCtrl.getAttrset(),	txt_edit, 0);
+					 	TxtPanelCtrl.insert(edit_txt, TxtPanelCtrl.getAttrset(),	txt_edit, point);
 		                txt_edit.requestFocus();
 				 }
 			}
