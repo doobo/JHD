@@ -44,7 +44,7 @@ public class EditPane extends JPanel {
 	 */
 	private static final long serialVersionUID = 3239918693395140849L;
 	private static  JTextField txt_title;
-	private JTextField txt_tag;
+	private static JTextField txt_tag;
 	private JTextField txt_serach;
 	private JComboBox cmb_books,cmb_sub;
 	private static JTextPane txt_edit = null;
@@ -385,7 +385,7 @@ public class EditPane extends JPanel {
 		                toNew();
 				 }else if(e.isControlDown()&&e.getKeyCode()==KeyEvent.VK_ENTER){
 		                toBigWindow();
-				 }else if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+				 }else if(e.getKeyCode()==KeyEvent.VK_ESCAPE ){
 					 	String edit_txt = txt_edit.getText();
 					 	String title_txt = txt_title.getText();
 					 	String tag_txt = txt_tag.getText();
